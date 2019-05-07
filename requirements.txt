@@ -1,0 +1,5 @@
+cs50
+requests
+Flask==1.0.2
+Jinja2==2.10
+gunicorn==19.9.0

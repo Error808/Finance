@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+    <form id = "form" action="/register"  method="post">
+        <div>
+            <p id="res" style ='color:blue'>Pick a username</p>
+        </div>
+        <div class="form-group">
+            <input id= "input" autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+        </div>
+        <div id = "P"  class="form-group">
+            <input class="form-control" name="password" placeholder="Password"/>
+            <p></p>
+            <input class="form-control" name="confirmation" placeholder="Retype Password"/>
+            <p></p>
+            <button  id ="submit" class="btn btn-default" type="submit">Register</button>
+        </div>
+    </form>
+
+    <script>
+    let input = document.getElementById("input");
+    $("#P").hide();
+    input.onkeyup = function()
+    {
+        if(input.value.length > 0)
+        {
+            $.getJSON('/check?username=' + input.value, function(data)
+            {
+                if(data == false)
+                {
+                     $("#P").fadeOut();
+                     $("#res").html("<span style ='color:red'>Username Not available</span>").fadeIn();
+                }
+                else
+                {
+                    $("#P").fadeIn();
+                    $("#res").html("<span style ='color:green'>Username available</span>").fadeIn();
+                }
+            });
+        }
+        else
+        {
+            $("#P").fadeOut();
+            $("#res").html("Pick a username");
+        }
+    }
+    </script>
+
+{% endblock %}
