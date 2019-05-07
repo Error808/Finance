@@ -1,5 +1,7 @@
 Flask-Login==0.4.1
 Flask-Session==0.3.1
+passlib
+SQLAlchemy
 cs50
 requests
 Flask==1.0.2
