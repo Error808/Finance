@@ -279,6 +279,7 @@ def register():
         result = db.execute("INSERT INTO users (username, hash) Values(:username, :hash)",
                             username=request.form.get("username"), hash=hash)
 
+
         session["user_id"] = result
 
         flash("Registered!")
