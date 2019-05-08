@@ -311,7 +311,7 @@ def sell():
         if quote == None:
             return apology("invalid symbol of the stock")
 
-        hist = db.execute("SELECT stock, SUM(shares) AS shares FROM history WHERE id =:id and stock =:name",
+        hist = db.execute("SELECT stock, SUM(shares) AS shares FROM history WHERE id =:id and stock =:name GROUP by stock",
                           id=session["user_id"], name=request.form.get("symbol"))
 
         # check if the user has the stock and valid shares
