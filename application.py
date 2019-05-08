@@ -13,6 +13,20 @@ from helpers import apology, login_required, lookup, usd
 # Configure application
 app = Flask(__name__)
 
+import urlparse
+import psycopg2
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
+conn = psycopg2.connect(
+ database=url.path[1:],
+ user=url.username,
+ password=url.password,
+ host=url.hostname,
+ port=url.port
+)
+
+
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
@@ -40,7 +54,7 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
-db = SQL("postgres:///jvqrtbugnndzjg:681d3846f6e0f13ba84155d2ad50b4b56c4d5b2ffc23e58137c4383c01da4661@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d9krdf0f2pbkjs")
+db = SQL(os.environ["postgres:///jvqrtbugnndzjg:681d3846f6e0f13ba84155d2ad50b4b56c4d5b2ffc23e58137c4383c01da4661@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d9krdf0f2pbkjs"])
 
 # GET: you access the route via url /password
 # POST: you submit a form to /password and doesnt show
