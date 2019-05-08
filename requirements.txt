@@ -5,3 +5,4 @@ requests
 Jinja2==2.10
 gunicorn==19.9.0
 passlib==1.7.1
+psycopg == 2-2.8.2
