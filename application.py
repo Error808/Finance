@@ -7,13 +7,14 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from passlib.apps import custom_app_context as pwd_context
+from urlparse import urlparse
 
 from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
 
-import urlparse
+
 import psycopg2
 urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
