@@ -2,3 +2,5 @@ cs50
 Flask
 Flask-Session
 requests
+Jinja2==2.10
+gunicorn==19.9.0
