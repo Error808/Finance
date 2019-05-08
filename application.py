@@ -7,12 +7,11 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from passlib.apps import custom_app_context as pwd_context
+
 from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
-
-
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -40,8 +39,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-# db = SQL("sqlite:///finance.db")
-db = SQL("postgres:///jvqrtbugnndzjg:681d3846f6e0f13ba84155d2ad50b4b56c4d5b2ffc23e58137c4383c01da4661@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d9krdf0f2pbkjs")
+db = SQL("sqlite:///finance.db")
+# db = SQL("postgres://jvqrtbugnndzjg:681d3846f6e0f13ba84155d2ad50b4b56c4d5b2ffc23e58137c4383c01da4661@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d9krdf0f2pbkjs")
 
 # GET: you access the route via url /password
 # POST: you submit a form to /password and doesnt show
