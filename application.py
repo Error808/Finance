@@ -85,8 +85,7 @@ def index():
         "SELECT stock, SUM(shares) AS shares, SUM(total) AS total FROM history WHERE id = :id GROUP BY stock", id=session["user_id"])
 
     # user's current cash
-    cash = db.execute("SELECT cash FROM users WHERE id = :id",
-                      id=session["user_id"])[0]['cash']
+    cash = db.execute("SELECT cash FROM users WHERE id = :id", id=session["user_id"])[0]['cash']
 
     total = cash
     # if user bought anything
