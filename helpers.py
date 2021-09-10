@@ -1,4 +1,3 @@
-import requests
 import urllib.parse
 import pyEX as p
 
@@ -48,26 +47,6 @@ def lookup(symbol):
 
     # Parse response
     try:
-        return {
-            "name": quote["companyName"],
-            "price": float(quote["latestPrice"]),
-            "symbol": quote["symbol"]
-        }
-    except (KeyError, TypeError, ValueError):
-        return None
-
-
-
-    # Contact API
-    # try:
-    #     response = requests.get(f"https://api.iextrading.com/1.0/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}")
-    #     response.raise_for_status()
-    # except requests.RequestException:
-    #     return None
-
-    # Parse response
-    try:
-        quote = response.json()
         return {
             "name": quote["companyName"],
             "price": float(quote["latestPrice"]),
