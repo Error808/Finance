@@ -38,9 +38,9 @@ def login_required(f):
 def lookup(symbol):
     """Look up quote for symbol."""
 
-    api_key= "pk_d556df53c8ac46c59e5585cb1de42cf3"
+    
 
-    c = p.Client(api_token=api_key, version='stable')
+    c = p.Client(API_KEY, version='stable')
 
     quote = c.quote(symbol=symbol)
 
