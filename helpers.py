@@ -44,8 +44,6 @@ def lookup(symbol):
 
     quote = c.quote(symbol=symbol)
 
-    print(type(quote))
-    
 
     # Parse response
     try:
