@@ -1,5 +1,6 @@
 import requests
 import urllib.parse
+import pyEX as p
 
 from flask import redirect, render_template, request, session
 from functools import wraps
@@ -37,12 +38,33 @@ def login_required(f):
 def lookup(symbol):
     """Look up quote for symbol."""
 
-    # Contact API
+    api_key= "pk_d556df53c8ac46c59e5585cb1de42cf3"
+
+    c = p.Client(api_token=api_key, version='stable')
+
+    quote = c.quote(symbol=symbol)
+
+    print(type(quote))
+    
+
+    # Parse response
     try:
-        response = requests.get(f"https://api.iextrading.com/1.0/stock/{urllib.parse.quote_plus(symbol)}/quote")
-        response.raise_for_status()
-    except requests.RequestException:
+        return {
+            "name": quote["companyName"],
+            "price": float(quote["latestPrice"]),
+            "symbol": quote["symbol"]
+        }
+    except (KeyError, TypeError, ValueError):
         return None
+
+
+
+    # Contact API
+    # try:
+    #     response = requests.get(f"https://api.iextrading.com/1.0/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}")
+    #     response.raise_for_status()
+    # except requests.RequestException:
+    #     return None
 
     # Parse response
     try:
