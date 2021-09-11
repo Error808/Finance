@@ -7,4 +7,3 @@ passlib==1.7.1
 psycopg2==2.8.2
 SQLAlchemy
 pyEX
-boto
