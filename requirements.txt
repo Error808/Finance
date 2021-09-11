@@ -3,7 +3,4 @@ Flask
 Flask-Session
 Jinja2==2.10
 gunicorn==19.9.0
-passlib==1.7.1
-psycopg2==2.8.2
-SQLAlchemy
 pyEX
