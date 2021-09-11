@@ -1,5 +1,6 @@
 import urllib.parse
 import pyEX as p
+import os
 
 
 from flask import redirect, render_template, request, session
@@ -40,7 +41,7 @@ def lookup(symbol):
 
     
 
-    c = p.Client(API_KEY, version='stable')
+    c = p.Client(os.environ['API_KEY'], version='stable')
 
     quote = c.quote(symbol=symbol)
 

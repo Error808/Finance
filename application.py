@@ -1,6 +1,4 @@
 import os
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['API_KEY'], os.environ['DATABASE_URL'])
 
 from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from flask_session import Session
@@ -40,7 +38,8 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
-db = SQL(DATABASE_URL)
+db = SQL(os.environ['DATABASE_URL'])
+# "postgres://jvqrtbugnndzjg:681d3846f6e0f13ba84155d2ad50b4b56c4d5b2ffc23e58137c4383c01da4661@ec2-174-129-208-118.compute-1.amazonaws.com:5432/d9krdf0f2pbkjs"
 
 # GET: you access the route via url /password
 # POST: you submit a form to /password and doesnt show
