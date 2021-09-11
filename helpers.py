@@ -1,5 +1,5 @@
 import urllib.parse
-import pyEX as p
+import pyEX
 import os
 
 
@@ -39,12 +39,11 @@ def login_required(f):
 def lookup(symbol):
     """Look up quote for symbol."""
 
-    
-
-    c = p.Client(os.environ['API_KEY'], version='stable')
-
-    quote = c.quote(symbol=symbol)
-
+    try:
+        c = pyEX.Client(os.environ['API_KEY'], version='stable')
+        quote = c.quote(symbol=symbol)
+    except:
+        return None
 
     # Parse response
     try:
