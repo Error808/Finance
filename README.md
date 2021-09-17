@@ -7,3 +7,4 @@ This application uses Python, HTML and styling with Bootstrap. It also uses [IEX
 
 ## Access
 My application is available at https://financerx.herokuapp.com/
+
