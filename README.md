@@ -1,5 +1,4 @@
 ## Introduction
-
 This application helps beginner traders to gain experience by trading stocks in an artificial environment.
 
 ## Created with
